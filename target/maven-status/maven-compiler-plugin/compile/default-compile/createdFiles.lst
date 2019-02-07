@@ -1,0 +1,3 @@
+pl\krolka\jsf\entities\Student.class
+pl\krolka\jsf\controller\StudentController.class
+pl\krolka\jsf\dao\StudentDAO.class
