@@ -20,4 +20,19 @@ public class StudentDAO {
 		 return query.getResultList();
 	}
 	
+	public void add(Student student) {
+		entityManager.persist(student);
+		entityManager.flush();
+	}
+	
+	public void delete(int id) {
+		Student studentToRemove = entityManager.find(Student.class, id);
+		entityManager.remove(studentToRemove);
+		entityManager.flush();
+	}
+	
+	public void update(Student student) {
+		entityManager.merge(student);
+		entityManager.flush();
+	}
 }

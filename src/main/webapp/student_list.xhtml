@@ -13,8 +13,7 @@
 	<h3>Welcome in CRUD App</h3>
 
 	<h:form>
-		<h:commandButton id="add_std_btn" value="Add Student"
-			onclick="if (!confirm('Are you sure?')) return false"
+		<h:commandButton id="add_std_btn" value="Add Student"			
 			action="add_Student_Form"></h:commandButton>
 	</h:form>
 
@@ -46,7 +45,7 @@
 				<f:facet name="header">Action</f:facet>
 				<h:commandLink value="Delete"
 					action="#{studentController.deleteStudent(student.id)}"
-					onclick="if (!confirm('Jesteś pewny że chcesz usunąć studenta o ?')) return false" />
+					onclick="if (!confirm('Jesteś pewny że chcesz usunąć studenta ?')) return false" />
 			</h:column>
 
 		</h:dataTable>

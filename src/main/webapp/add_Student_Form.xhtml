@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Add Student</title>
+</h:head>
+<h:body>
+	<h3>Add Student</h3>
+
+	<h:form>
+		<h:panelGrid columns="3">
+
+			<h:outputLabel id="firstNameLabel" value="First Name:"
+				for="inputTextFirstName" />
+			<h:inputText id="inputTextFirstName" value="#{studentController.student.firstName}" />
+			<br />
+
+			<h:outputLabel id="lastNamelabel" value="Last Name:"
+				for="inputTextLastName" />
+			<h:inputText id="inputTextLastName" value="#{studentController.student.lastName}" />
+			<br />
+
+			<h:outputLabel id="emailLabel" value="Email:" for="inputTextEmail" />
+			<h:inputText id="inputTextEmail" value="#{studentController.student.email}" />
+			<br />
+
+			<h:commandButton value="Save" id="button" action="#{studentController.addStudent()}" ></h:commandButton>
+
+		</h:panelGrid>
+	</h:form>
+	<h:form>
+		<h:commandLink value="Back to the student list" action="student_list" onclick="if (!confirm('Are you sure?')) return false" />
+	</h:form>
+
+
+</h:body>
+</html>
