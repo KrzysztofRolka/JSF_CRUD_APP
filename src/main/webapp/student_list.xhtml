@@ -4,55 +4,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 	<title>Welcome Page</title>
 </h:head>
 <h:body>
-	<h3>Welcome in CRUD App</h3>
+	<b:navBar brand="CRUD APP" brandHref="#" fixed="top" inverse="true"/>
+	
+	<br/>
+	<br/>
+	<br/>
 
-	<h:form>
-		<h:commandButton id="add_std_btn" value="Add Student"			
-			action="add_Student_Form"></h:commandButton>
-	</h:form>
+	<b:container>
+		<b:jumbotron>
+			<h1>Welcome in CRUD App</h1>
+			<p>Click button below to add new student to database.</p>
 
-	<h:form>
-		<h2>Students List:</h2>
-		<h:dataTable value="#{studentController.students}" var="student" border="2">
-			<h:column>
-				<f:facet name="header">Student Id</f:facet>
-         #{student.id}
-      </h:column>
-			<h:column>
-				<f:facet name="header">First Name</f:facet>
-         #{student.firstName}
-      </h:column>
-			<h:column>
-				<f:facet name="header">Last Name</f:facet>
-           #{student.lastName}
-       </h:column>
-			<h:column>
-				<f:facet name="header">Email</f:facet>
-           #{student.email}
-       </h:column>
-			<h:column>
-				<f:facet name="header">Update</f:facet>
-				<h:commandLink value="Update"
-					action="#{studentController.onUpdate(student)}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Action</f:facet>
-				<h:commandLink value="Delete"
-					action="#{studentController.deleteStudent(student.id)}"
-					onclick="if (!confirm('Jesteś pewny że chcesz usunąć studenta ?')) return false" />
-			</h:column>
-
-		</h:dataTable>
-	</h:form>
+			<h:form>
+				<b:commandButton class="btn btn-lg btn-info" id="add_std_btn"
+					value="Add Student" action="add_Student_Form"></b:commandButton>
+			</h:form>
+			<br />
+		</b:jumbotron>
+	</b:container>
+	
+	<b:container>
+		<b:jumbotron>
+			<h2>Student list:</h2>
+			<h:form>
+				<b:dataTable value="#{studentController.students}" var="student"
+					onpage="console.log('page');">
+					<b:dataTableColumn value="#{student.firstName}" label="First Name" />
+					<b:dataTableColumn value="#{student.lastName}" label="Last Name" />
+					<b:dataTableColumn value="#{student.email}" label="Email Name" />
+					<b:dataTableColumn label="Update">
+						<b:commandLink icon="pencil"
+							action="#{studentController.onUpdate(student)}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn label="Delete">
+						<b:commandLink icon="trash" 
+							action="#{studentController.deleteStudent(student.id)}"/>
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</b:jumbotron>
+	</b:container>
 
 </h:body>
 </html>
-<!-- 
-	
- -->

@@ -67,6 +67,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>1.4.1</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 </project>

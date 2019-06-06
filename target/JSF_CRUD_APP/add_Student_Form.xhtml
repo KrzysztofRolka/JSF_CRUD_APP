@@ -4,39 +4,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 	<title>Add Student</title>
+	
 </h:head>
 <h:body>
-	<h3>Add Student</h3>
 
-	<h:form>
-		<h:panelGrid columns="3">
+	<b:navBar brand="CRUD APP" brandHref="#" fixed="top" inverse="true"/>
 
-			<h:outputLabel id="firstNameLabel" value="First Name:"
-				for="inputTextFirstName" />
-			<h:inputText id="inputTextFirstName" value="#{studentController.student.firstName}" />
-			<br />
+	<br />
+	<br />
+	<br />
 
-			<h:outputLabel id="lastNamelabel" value="Last Name:"
-				for="inputTextLastName" />
-			<h:inputText id="inputTextLastName" value="#{studentController.student.lastName}" />
-			<br />
+	<b:container>
+		<b:jumbotron>
 
-			<h:outputLabel id="emailLabel" value="Email:" for="inputTextEmail" />
-			<h:inputText id="inputTextEmail" value="#{studentController.student.email}" />
-			<br />
 
-			<h:commandButton value="Save" id="button" action="#{studentController.addStudent()}" ></h:commandButton>
 
-		</h:panelGrid>
-	</h:form>
-	<h:form>
-		<h:commandLink value="Back to the student list" action="student_list" onclick="if (!confirm('Are you sure?')) return false" />
-	</h:form>
+			<h3>Add Student</h3>
 
+			<h:form>
+				<h:panelGrid columns="2">
+
+					<b:inputText id="inputTextFirstName" label="First Name" placeholder="First Name"
+						value="#{studentController.student.firstName}">
+					</b:inputText>
+					<br />
+
+					<b:inputText id="inputTextLastName" label="Last Name" placeholder="Last Name"
+						value="#{studentController.student.lastName}" />
+					<br />
+
+					<b:inputText id="inputTextEmail" label="Email" placeholder="Email"
+						value="#{studentController.student.email}" />
+					<br />
+
+					<b:commandButton class="btn btn-lg btn-info" value="Save"
+						id="button" action="#{studentController.addStudent()}"></b:commandButton>
+
+				</h:panelGrid>
+			</h:form>
+			<br/>
+			<h:form>
+				<b:commandLink value="Back to the student list"
+					action="student_list" />
+			</h:form>
+
+		</b:jumbotron>
+	</b:container>
 
 </h:body>
 </html>

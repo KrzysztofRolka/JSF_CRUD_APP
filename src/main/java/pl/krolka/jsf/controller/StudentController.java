@@ -13,66 +13,65 @@ import pl.krolka.jsf.entities.Student;
 
 @Named
 @SessionScoped
-public class StudentController implements Serializable{
+public class StudentController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private StudentDAO studentDAO;
-	
+
 	private List<Student> students;
 
 	private Student student;
-	
+
 	private Student studentToUpdate;
-	
 
 	public StudentController() {
 		student = new Student();
 	}
-	
+
 	public List<Student> getStudents() {
 		return students;
 	}
-	
+
 	public Student getStudent() {
 		return student;
 	}
-	
+
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-	
+
 	public Student getStudentToUpdate() {
 		return studentToUpdate;
 	}
-	
+
 	@PostConstruct
 	public void OnSetup() {
 		students = studentDAO.findAll();
 	}
-	
-	public String onUpdate(Student student) {
-		studentToUpdate = student;
-		return "update_Student_Form";
-	}
-	
+
 	public String addStudent() {
 		studentDAO.add(student);
 		student = new Student();
 		students = studentDAO.findAll();
 		return "student_list";
 	}
-	
+
 	public String deleteStudent(int id) {
 		studentDAO.delete(id);
 		students = studentDAO.findAll();
 		return "student_list";
 	}
-	
+
 	public String updateStudent() {
-	studentDAO.update(studentToUpdate);
-	students = studentDAO.findAll();
-	return "student_list";
+		studentDAO.update(studentToUpdate);
+		students = studentDAO.findAll();
+		return "student_list";
+	}
+	
+	public String onUpdate(Student student) {
+		studentToUpdate = student;
+		return "update_Student_Form";
 	}
 }
